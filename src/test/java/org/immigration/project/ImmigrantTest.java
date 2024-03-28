@@ -1,7 +1,5 @@
 package org.immigration.project;
 
-import org.immigration.project.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -53,7 +53,7 @@ public class WorkFlowItem {
     public void setCompletionDate(LocalDateTime completionDate) {
         this.completionDate = completionDate;
         if (completionDate != null) {
-            //this.status = Status.COMPLETED;
+            this.status = Status.APPROVED;
         }
     }
 

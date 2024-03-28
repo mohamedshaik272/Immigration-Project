@@ -1,7 +1,5 @@
 package org.immigration.project;
 
-import org.immigration.project.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
