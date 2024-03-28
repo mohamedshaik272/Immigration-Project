@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immigration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form id="immigrationForm">
+    <h1>Immigration Application Form</h1>
+
+    <!-- Applicant Information -->
+    <fieldset>
+        <legend>Applicant Information</legend>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required>
+    </fieldset>
+
+    <!-- Dependent Information -->
+    <fieldset id="dependentsSection">
+        <legend>Dependent Information</legend>
+        <!-- Placeholder for dependent fields -->
+    </fieldset>
+    <button type="button" onclick="addDependent()">Add Dependent</button>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit Application</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>

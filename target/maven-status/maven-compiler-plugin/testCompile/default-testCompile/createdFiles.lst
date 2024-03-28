@@ -1,0 +1,9 @@
+org\immigration\project\ImmigrantTest.class
+org\immigration\project\WorkFlowTableTest.class
+org\immigration\project\DependentTest.class
+org\immigration\project\WorkFlowItemTest.class
+org\immigration\project\ApproverTest.class
+org\immigration\project\ReviewerTest.class
+org\immigration\project\StatusTest.class
+org\immigration\project\DataEntryFormTest.class
+org\immigration\project\EmailNotificationTest.class
