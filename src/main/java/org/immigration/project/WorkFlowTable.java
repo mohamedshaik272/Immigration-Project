@@ -1,26 +1,27 @@
 package org.immigration.project;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class WorkFlowTable {
-    ArrayList<WorkFlowItem> table;
-    int numItems;
+    private final ArrayList<WorkFlowItem> table;
 
     public WorkFlowTable() {
         table = new ArrayList<>();
-        numItems = 0;
     }
 
     public void addWorkflowItem(WorkFlowItem item) {
         table.add(item);
-        numItems++;
     }
 
     public int getNumItems() {
-        return numItems;
+        return table.size();
     }
 
     public WorkFlowItem getNextItem() {
+        if (table.isEmpty()) {
+            throw new NoSuchElementException("No more items in the workflow.");
+        }
         return table.remove(0);
     }
 
@@ -34,4 +35,3 @@ public class WorkFlowTable {
         System.out.println("Item not found in the table.");
     }
 }
-

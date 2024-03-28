@@ -14,8 +14,8 @@ class WorkFlowTableTest {
     @BeforeEach
     void setUp() {
         workFlowTable = new WorkFlowTable();
-        workFlowItem1 = new WorkFlowItem("Item1", Status.NEW, null); // Assuming constructor exists
-        workFlowItem2 = new WorkFlowItem("Item2", Status.NEW, null); // Assuming constructor exists
+        workFlowItem1 = new WorkFlowItem("Item1", Status.NEW, null);
+        workFlowItem2 = new WorkFlowItem("Item2", Status.NEW, null);
     }
 
     @Test
@@ -46,7 +46,7 @@ class WorkFlowTableTest {
     @Test
     void testUpdateWorkflowItem() {
         workFlowTable.addWorkflowItem(workFlowItem1);
-        workFlowItem1.setStatus(Status.APPROVED); // Assuming a setStatus method exists
+        workFlowItem1.setStatus(Status.APPROVED);
 
         workFlowTable.updateWorkflowItem(workFlowItem1);
 
@@ -61,6 +61,5 @@ class WorkFlowTableTest {
         workFlowTable.updateWorkflowItem(workFlowItem2);
 
         assertEquals(1, workFlowTable.getNumItems(), "The number of items should not change after trying to update a non-existing item.");
-        // Additional logic can be added to capture the printed "Item not found in the table." message if needed.
     }
 }

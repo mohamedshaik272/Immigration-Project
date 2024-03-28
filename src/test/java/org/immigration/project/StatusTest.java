@@ -27,7 +27,6 @@ class StatusTest {
         Status[] statuses = Status.values();
         assertEquals(6, statuses.length, "There should be 6 statuses defined");
 
-        // Optionally, you can check if each enum value is present
         assertTrue(containsStatus(statuses, Status.NEW), "Status enum should contain NEW");
         assertTrue(containsStatus(statuses, Status.IN_REVIEW), "Status enum should contain " +
                 "IN_REVIEW");

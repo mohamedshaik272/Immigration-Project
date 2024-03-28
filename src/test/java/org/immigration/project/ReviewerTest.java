@@ -15,7 +15,6 @@ class ReviewerTest {
     private final String email = "johndoe@example.com";
     private Reviewer reviewer;
 
-    // Prepare to capture output for testing print statements
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach

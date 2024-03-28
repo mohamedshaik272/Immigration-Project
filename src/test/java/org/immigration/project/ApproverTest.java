@@ -111,17 +111,17 @@ class ApproverTest {
         }
 
         public void updateWorkflowItem(WorkFlowItem item) {
-            // Simulate updating an item
+            // Do nothing
         }
     }
 
     class FakeEmailNotification extends EmailNotification {
-        public void sendEmail() {
-            // Simulate sending an email
+        @Override
+        public void sendEmail(String email, String message) {
+            // Do nothing
         }
     }
 
-    // Assuming WorkFlowItem and Status are part of your project and simplified here
     class WorkFlowItem {
         private String itemId;
         private Status status;
