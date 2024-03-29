@@ -35,7 +35,7 @@ class ImmigrantTest {
     @Test
     void testSubmitDocumentsSendsEmail() {
         Immigrant immigrant = immigrantBuilder.build();
-        immigrant.emailNotification = mockEmailNotification;
+        immigrant.setEmailNotification(mockEmailNotification);
 
         immigrant.submitDocuments();
 
@@ -49,7 +49,7 @@ class ImmigrantTest {
     void testSubmitApplicationSendsEmail() {
         Immigrant immigrant = immigrantBuilder.build();
         // Inject mock EmailNotification
-        immigrant.emailNotification = mockEmailNotification;
+        immigrant.setEmailNotification(mockEmailNotification);
 
         immigrant.submitApplication();
 

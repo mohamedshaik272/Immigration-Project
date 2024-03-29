@@ -8,6 +8,7 @@ org\immigration\project\Reviewer.class
 org\immigration\project\Approver.class
 org\immigration\project\Dependent$Builder.class
 org\immigration\project\Dependent.class
+org\immigration\project\Main$1.class
 org\immigration\project\Status.class
 org\immigration\project\Immigrant$Builder.class
 org\immigration\project\Immigrant$1.class

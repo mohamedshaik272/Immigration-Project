@@ -13,7 +13,7 @@ public class Immigrant {
     private final UUID immigrantId;
     private WorkFlowItem workFlowItem;
     private String address;
-    public EmailNotification emailNotification;
+    private EmailNotification emailNotification;
     private Approver approver;
     private Reviewer reviewer;
     private List<String> documents;
@@ -48,6 +48,14 @@ public class Immigrant {
 
     public Status getStatus() {
         return status;
+    }
+
+    public void setEmailNotification(EmailNotification emailNotification) {
+        this.emailNotification = emailNotification;
+    }
+
+    public EmailNotification getEmailNotification() {
+        return emailNotification;
     }
 
     public void setStatus(Status status) {
