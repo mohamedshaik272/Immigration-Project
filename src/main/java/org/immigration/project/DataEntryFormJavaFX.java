@@ -32,79 +32,79 @@
 package org.immigration.project;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import static javafx.geometry.HPos.RIGHT;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.Modality;
 
 public class DataEntryFormJavaFX extends Application {
+    private DataEntryForm form = new DataEntryForm();
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("JavaFX Welcome");
+        primaryStage.setTitle("Immigrant Data Entry");
+
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        // Creating input fields
+        TextField nameField = new TextField();
+        TextField emailField = new TextField();
+        TextField countryField = new TextField();
+        Button submitButton = new Button("Submit Data");
 
-        Label userName = new Label("User Name:");
-        grid.add(userName, 0, 1);
+        grid.add(new Label("Name:"), 0, 0);
+        grid.add(nameField, 1, 0);
+        grid.add(new Label("Email:"), 0, 1);
+        grid.add(emailField, 1, 1);
+        grid.add(new Label("Country:"), 0, 2);
+        grid.add(countryField, 1, 2);
+        grid.add(submitButton, 1, 3);
 
-        TextField userTextField = new TextField();
-        grid.add(userTextField, 1, 1);
+        submitButton.setOnAction(e -> {
+            String name = nameField.getText();
+            String email = emailField.getText();
+            String country = countryField.getText();
 
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
+            // Setting fields in DataEntryForm
+            form.setField("Name", name);
+            form.setField("Email", email);
+            form.setField("Country", country);
 
-        PasswordField pwBox = new PasswordField();
-        grid.add(pwBox, 1, 2);
-
-        Button btn = new Button("Sign in");
-        HBox hbBtn = new HBox(10);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(btn);
-        grid.add(hbBtn, 1, 4);
-
-        final Text actiontarget = new Text();
-        grid.add(actiontarget, 0, 6);
-        grid.setColumnSpan(actiontarget, 2);
-        grid.setHalignment(actiontarget, RIGHT);
-        actiontarget.setId("actiontarget");
-
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.FIREBRICK);
-                actiontarget.setText("Sign in button pressed");
-            }
+            showImmigrantData();
         });
 
-        Scene scene = new Scene(grid, 300, 275);
+        Scene scene = new Scene(grid, 300, 250);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void showImmigrantData() {
+        Stage popupWindow = new Stage();
+        popupWindow.initModality(Modality.APPLICATION_MODAL);
+        popupWindow.setTitle("Submitted Immigrant Data");
+
+        VBox vBox = new VBox(10);
+        vBox.setPadding(new Insets(10));
+        form.getFields().forEach((key, value) -> vBox.getChildren().add(new Text(key + ": " + value)));
+
+        Scene popupScene = new Scene(vBox, 300, 200);
+        popupWindow.setScene(popupScene);
+        popupWindow.showAndWait();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
 }
+
