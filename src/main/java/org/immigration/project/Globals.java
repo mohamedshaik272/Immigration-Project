@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Globals {
 
-    public ArrayList<Immigrant> immigrantArrayList = new ArrayList<>();
+    public static ArrayList<Immigrant> immigrantArrayList = new ArrayList<>();
     enum UserType {
         DATAENTRY("dataentry", "dataentry", "data_entry", "data_entry.fxml"),
         REVIEWER("reviewer", "reviewer", "reviewer", "review.fxml"),

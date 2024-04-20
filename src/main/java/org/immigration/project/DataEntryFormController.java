@@ -38,6 +38,8 @@ public class DataEntryFormController {
         // Create an instance of Immigrant.Builder
         Immigrant immigrant = new Immigrant(name, email, country, Status.NEW, "123 Main St", date);
 
+        Globals.immigrantArrayList.add(immigrant);
+
         // Optionally, perform additional actions with the immigrant object
         System.out.println("Immigrant Details:");
         System.out.println("Name: " + immigrant.getName());
@@ -46,7 +48,7 @@ public class DataEntryFormController {
         System.out.println("Date: " + immigrant.getDate());
     }
 
-    
+
 
 
 
