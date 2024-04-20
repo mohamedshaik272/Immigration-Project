@@ -7,12 +7,11 @@ public class Dependent {
     private String relationship;
     private LocalDate dateOfBirth;
 
-    private Dependent(Builder builder) {
-        this.name = builder.name;
-        this.relationship = builder.relationship;
-        this.dateOfBirth = builder.dateOfBirth;
+    // Private constructor to enforce the use of the builder
+    Dependent() {
     }
 
+    // Getter methods
     public String getName() {
         return name;
     }
@@ -23,6 +22,15 @@ public class Dependent {
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
+    }
+
+    public void setName(String name) {
+    }
+
+    public void setRelationship(String relationship) {
+    }
+
+    public void setDateOfBirth(LocalDate dob) {
     }
 
     // Builder Class
@@ -56,8 +64,11 @@ public class Dependent {
         }
 
         public Dependent build() {
-            return new Dependent(this);
+            Dependent dependent = new Dependent();
+            dependent.name = this.name;
+            dependent.relationship = this.relationship;
+            dependent.dateOfBirth = this.dateOfBirth;
+            return dependent;
         }
     }
 }
-

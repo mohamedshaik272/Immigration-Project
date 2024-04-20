@@ -20,17 +20,16 @@ public class Immigrant {
     private List<Dependent> dependents;
     private LocalDate date;
 
-    // Builder constructor is private to enforce use of the Builder.
-    private Immigrant(Builder builder) {
-        this.name = builder.name;
-        this.email = builder.email;
-        this.country = builder.country;
-        this.status = builder.status;
-        this.address = builder.address;
-        this.documents = new ArrayList<>(builder.documents);
-        this.dependents = new ArrayList<>(builder.dependents);
-        this.date = builder.date;
+    public Immigrant(String name, String email, String country, Status status, String address, LocalDate date) {
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        this.status = status;
+        this.address = address;
+        this.date = date;
         this.immigrantId = UUID.randomUUID();
+        this.documents = new ArrayList<>();
+        this.dependents = new ArrayList<>();
         this.emailNotification = new EmailNotification();
     }
 
@@ -50,14 +49,6 @@ public class Immigrant {
         return status;
     }
 
-    public void setEmailNotification(EmailNotification emailNotification) {
-        this.emailNotification = emailNotification;
-    }
-
-    public EmailNotification getEmailNotification() {
-        return emailNotification;
-    }
-
     public void setStatus(Status status) {
         this.status = status;
     }
@@ -72,6 +63,14 @@ public class Immigrant {
 
     public String getAddress() {
         return address;
+    }
+
+    public void setEmailNotification(EmailNotification emailNotification) {
+        this.emailNotification = emailNotification;
+    }
+
+    public EmailNotification getEmailNotification() {
+        return emailNotification;
     }
 
     public Approver getApprover() {
@@ -95,7 +94,6 @@ public class Immigrant {
     }
 
     // Functional methods.
-
     public void submitDocuments() {
         workFlowItem = new WorkFlowItem(name, status, reviewer);
         emailNotification.sendEmail("Documents Submitted", "Documents submitted by " + name);
@@ -112,28 +110,4 @@ public class Immigrant {
             dependents.add(dependent);
         }
     }
-
-    // Static nested Builder class.
-    public static class Builder {
-        private String name;
-        private String email;
-        private String country;
-        private Status status;
-        private String address;
-        private List<String> documents = new ArrayList<>();
-        private List<Dependent> dependents = new ArrayList<>();
-        private LocalDate date;
-
-        public Builder withName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        // Additional builder methods for setting other properties...
-
-        public Immigrant build() {
-            return new Immigrant(this);
-        }
-    }
 }
-
