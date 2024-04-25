@@ -110,4 +110,19 @@ public class Immigrant {
             dependents.add(dependent);
         }
     }
+
+    public String toString() {
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Country: " + country);
+        System.out.println("Status: " + status);
+        System.out.println("Address: " + address);
+        System.out.println("Date: " + date);
+        System.out.println("Number of dependents: " + dependents.size());
+        for(Dependent dependent : dependents) {
+            System.out.println("\t" + dependent.toString());
+        }
+
+        return "";
+    }
 }

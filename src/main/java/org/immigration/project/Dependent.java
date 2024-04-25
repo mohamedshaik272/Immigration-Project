@@ -70,5 +70,13 @@ public class Dependent {
             dependent.dateOfBirth = this.dateOfBirth;
             return dependent;
         }
+
+        public String toString() {
+            return "Dependent{" +
+                    "name='" + name + '\'' +
+                    ", relationship='" + relationship + '\'' +
+                    ", dateOfBirth=" + dateOfBirth +
+                    '}';
+        }
     }
 }
