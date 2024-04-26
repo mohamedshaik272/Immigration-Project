@@ -59,6 +59,7 @@ public class ReviewerController {
     }
     @FXML
     private void handlePreviousButton() {
+        //reverse of the previous
         if (immigrantArrayList.isEmpty()){
             return;
         } else if (immigrantArrayList.size() == 1) {
@@ -75,6 +76,7 @@ public class ReviewerController {
     @FXML
     private void handleSubmitButtonAction() {
         if (nameField != null && emailField != null && datePicker != null && countryField != null) {
+            //move to the next list for approval step
             approverArrayList.add(currentImmigrant);
             immigrantArrayList.remove(currentImmigrant);
             this.currentImmigrant = immigrantArrayList.get(0);
