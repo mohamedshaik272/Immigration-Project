@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Globals {
 
     public static ArrayList<Immigrant> immigrantArrayList = new ArrayList<>();
+    //public static Iterator<Immigrant> iterator = immigrantArrayList.iterator();
     enum UserType {
         DATAENTRY("dataentry", "dataentry", "data_entry", "data_entry.fxml"),
         REVIEWER("reviewer", "reviewer", "reviewer", "review.fxml"),
