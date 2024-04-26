@@ -1,11 +1,13 @@
 package org.immigration.project;
 
 import java.util.ArrayList;
+import java.util.ListIterator ;
 
 public class Globals {
 
     public static ArrayList<Immigrant> immigrantArrayList = new ArrayList<>();
-    //public static Iterator<Immigrant> iterator = immigrantArrayList.iterator();
+    public static ListIterator<Immigrant> iterator = immigrantArrayList.listIterator();
+    public static ArrayList<Immigrant> approverArrayList = new ArrayList<>();
     enum UserType {
         DATAENTRY("dataentry", "dataentry", "data_entry", "data_entry.fxml"),
         REVIEWER("reviewer", "reviewer", "reviewer", "review.fxml"),

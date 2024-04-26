@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import java.time.LocalDate;
 
 import static org.immigration.project.Globals.immigrantArrayList;
+import static org.immigration.project.Globals.approverArrayList;
+import static org.immigration.project.Globals.iterator;
 
 public class ReviewerController {
 
@@ -40,34 +42,43 @@ public class ReviewerController {
     protected void logout() {
         StageController.activate("login");
     }
-
+    @FXML
     private void handleNextButton() {
-
-            nameField.setText(currentImmigrant.getName());
-            emailField.setText(currentImmigrant.getEmail());
-            countryField.setText(currentImmigrant.getCountry());
-            datePicker.setValue(currentImmigrant.getDate());
-            addressField.setText(currentImmigrant.getAddress());
-
+        if (immigrantArrayList.isEmpty()){
+            return;
+        } else if (immigrantArrayList.size() == 1) {
+            currentImmigrant = immigrantArrayList.get(0);
+        } else if (iterator.hasNext()) {
+            currentImmigrant = iterator.next();
+        }
+        nameField.setText(currentImmigrant.getName());
+        emailField.setText(currentImmigrant.getEmail());
+        countryField.setText(currentImmigrant.getCountry());
+        datePicker.setValue(currentImmigrant.getDate());
+        addressField.setText(currentImmigrant.getAddress());
     }
+    @FXML
     private void handlePreviousButton() {
-
-            nameField.setText(currentImmigrant.getName());
-            emailField.setText(currentImmigrant.getEmail());
-            countryField.setText(currentImmigrant.getCountry());
-            datePicker.setValue(currentImmigrant.getDate());
-            addressField.setText(currentImmigrant.getAddress());
-
+        if (immigrantArrayList.isEmpty()){
+            return;
+        } else if (immigrantArrayList.size() == 1) {
+            currentImmigrant = immigrantArrayList.get(0);
+        } else if (iterator.hasPrevious()) {
+            currentImmigrant = iterator.previous();
+        }
+        nameField.setText(currentImmigrant.getName());
+        emailField.setText(currentImmigrant.getEmail());
+        countryField.setText(currentImmigrant.getCountry());
+        datePicker.setValue(currentImmigrant.getDate());
+        addressField.setText(currentImmigrant.getAddress());
     }
-
+    @FXML
     private void handleSubmitButtonAction() {
         if (nameField != null && emailField != null && datePicker != null && countryField != null) {
-            //NA
+            approverArrayList.add(currentImmigrant);
+            immigrantArrayList.remove(currentImmigrant);
+            this.currentImmigrant = immigrantArrayList.get(0);
         }
     }
 
-    @FXML
-    protected void sendToApprover() {
-        System.out.println("Sending to approver...");
-    }
 }
