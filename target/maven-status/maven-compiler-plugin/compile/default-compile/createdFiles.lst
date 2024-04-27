@@ -1,8 +1,7 @@
-org\immigration\project\Dependent$1.class
 org\immigration\project\Globals.class
-org\immigration\project\DataEntryFormJavaFX.class
 org\immigration\project\Approver.class
 org\immigration\project\MyApplication.class
+org\immigration\project\DataEntryFormController.class
 org\immigration\project\Globals$UserType.class
 module-info.class
 org\immigration\project\Status.class
@@ -17,8 +16,7 @@ org\immigration\project\Reviewer.class
 org\immigration\project\Dependent$Builder.class
 org\immigration\project\LoginController.class
 org\immigration\project\Dependent.class
+org\immigration\project\ReviewerController.class
 org\immigration\project\StageController.class
-org\immigration\project\Immigrant$Builder.class
 org\immigration\project\ReviewerJavaFX.class
-org\immigration\project\Immigrant$1.class
 org\immigration\project\SecondController.class

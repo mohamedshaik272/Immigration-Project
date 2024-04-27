@@ -1,0 +1,4 @@
+--patch-module
+org.immigration.project=_
+--add-reads
+org.immigration.project=ALL-UNNAMED
