@@ -120,7 +120,7 @@ public class Immigrant {
         System.out.println("Date: " + date);
         System.out.println("Number of dependents: " + dependents.size());
         for(Dependent dependent : dependents) {
-            System.out.println("\t" + dependent.toString());
+            System.out.println("\t" + dependent);
         }
 
         return "";

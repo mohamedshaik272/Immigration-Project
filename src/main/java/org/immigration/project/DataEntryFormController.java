@@ -1,22 +1,12 @@
 package org.immigration.project;
 
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import static org.immigration.project.Globals.immigrantArrayList;
-
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.time.LocalDate;
+import static org.immigration.project.Globals.immigrantArrayList;
 
 public class DataEntryFormController {
     @FXML
@@ -35,21 +25,22 @@ public class DataEntryFormController {
     private TextField dependentNameField;
 
     @FXML
-    private TextField dependentRelationshipField;
+    private ComboBox<String> dependentRelationshipField;
 
     @FXML
     private DatePicker dependentDobPicker;
 
     @FXML
-    private TextField countryField;
+    private ComboBox<String> countryComboBox;
 
     // Method to handle the action of the "Submit" button
     @FXML
     private void handleSubmitButtonAction() {
-        if (nameField != null && emailField != null && datePicker != null && countryField != null) {
+        if (nameField.getText() != null && emailField.getText() != null && datePicker.getValue() != null && countryComboBox.getValue() != null) {
             String name = nameField.getText();
             String email = emailField.getText();
-            String country = countryField.getText();
+            String country = countryComboBox.getValue();
+            dependentDobPicker = datePicker;
             LocalDate date = datePicker.getValue();
             String address = addressField.getText();
 
@@ -60,14 +51,16 @@ public class DataEntryFormController {
                 System.out.println(immi.toString());
             }
 
+            // Clear the fields after submitting
             nameField.setText("");
             emailField.setText("");
-            countryField.setText("");
+            countryComboBox.setValue(null); // Clear ComboBox selection
             datePicker.setValue(null);
             addressField.setText("");
+        } else {
+            System.out.println("Please fill in all fields.");
         }
     }
-
 
     @FXML
     protected void onBackButton() {
@@ -76,9 +69,9 @@ public class DataEntryFormController {
 
     @FXML
     public void handleAddDependentAction() {
-        if (dependentNameField != null && dependentRelationshipField != null && dependentDobPicker != null) {
+        if (dependentNameField.getText() != null && dependentRelationshipField.getValue() != null ) {
             String name = dependentNameField.getText();
-            String relationship = dependentRelationshipField.getText();
+            String relationship = dependentRelationshipField.getValue();
             LocalDate dob = dependentDobPicker.getValue();
 
             Dependent dependent = new Dependent.Builder()
@@ -87,13 +80,11 @@ public class DataEntryFormController {
                     .withDateOfBirth(dob)
                     .build();
 
-            // Add the dependent
             immigrantArrayList.get(immigrantArrayList.size() - 1).addDependent(dependent);
 
-        }
-
-        for (Immigrant immigrant : immigrantArrayList) {
-            System.out.println(immigrant.toString());
+            for (Immigrant immigrant : immigrantArrayList) {
+                System.out.println(immigrant.toString());
+            }
         }
     }
 }

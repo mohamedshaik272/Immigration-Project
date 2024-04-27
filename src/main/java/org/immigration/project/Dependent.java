@@ -8,7 +8,7 @@ public class Dependent {
     private LocalDate dateOfBirth;
 
     // Private constructor to enforce the use of the builder
-    Dependent() {
+    private Dependent() {
     }
 
     // Getter methods
@@ -24,13 +24,24 @@ public class Dependent {
         return dateOfBirth;
     }
 
+    // Setter methods (if needed)
     public void setName(String name) {
+        this.name = name;
     }
 
     public void setRelationship(String relationship) {
+        this.relationship = relationship;
     }
 
     public void setDateOfBirth(LocalDate dob) {
+        this.dateOfBirth = dob;
+    }
+
+    // Override toString to provide a meaningful representation
+    @Override
+    public String toString() {
+        return "Name: " + name +
+                ", Relationship: " + relationship;
     }
 
     // Builder Class
@@ -56,9 +67,6 @@ public class Dependent {
         }
 
         public Builder withDateOfBirth(LocalDate dateOfBirth) {
-            if (dateOfBirth == null) {
-                throw new IllegalArgumentException("Date of birth cannot be null");
-            }
             this.dateOfBirth = dateOfBirth;
             return this;
         }
@@ -69,14 +77,6 @@ public class Dependent {
             dependent.relationship = this.relationship;
             dependent.dateOfBirth = this.dateOfBirth;
             return dependent;
-        }
-
-        public String toString() {
-            return "Dependent{" +
-                    "name='" + name + '\'' +
-                    ", relationship='" + relationship + '\'' +
-                    ", dateOfBirth=" + dateOfBirth +
-                    '}';
         }
     }
 }
